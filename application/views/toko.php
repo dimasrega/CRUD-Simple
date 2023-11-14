@@ -11,7 +11,7 @@
 <body>
 
     <!-- Begin Page Content -->
-    <div class="container-fluid">
+    <div class="container mt-4">
 
         <!-- Page Heading -->
 
@@ -57,7 +57,8 @@
                                     <?= $sm['alamat']; ?>
                                 </td>
                                 <td>
-                                    <button class="badge badge-success" data-toggle="modal" data-target="#modaledit<?php echo $sm['id']; ?>">edit</button>
+                                    <button class="badge badge-warning" data-toggle="modal" data-target="#modaledit<?php echo $sm['id']; ?>">edit</button>
+                                    <button class="badge badge-info" data-toggle="modal" data-target="#modaldetail<?php echo $sm['id']; ?>">Detail</button>
                                     <a href="<?php echo base_url('auth/hapus/') . $sm['id']; ?>" class="badge badge-danger">delete</a>
 
                                 </td>
@@ -144,9 +145,43 @@
         </div>
         </div>
     <?php endforeach; ?>
+
+
+    <!-- Modal detail -->
+    <?php $no = 0;
+    foreach ($toko as $sm) : $no++; ?>
+        <div class="modal fade" id="modaldetail<?php echo $sm['id']; ?>" tabindex="-1" aria-labelledby="modaldetailLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modaldetailLabel">modal detail</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="<?= base_url('Auth/edit/' . $sm['id']); ?>" method="post">
+                        <div class="modal-body" <?php echo form_open_multipart('Auth/edit'); ?> <div class="form-group">
+                            <input type="text" readonly class="form-control" id="nama_toko" name="nama_toko" value="<?= $sm['nama_toko']; ?>">
+                            <!-- </div> -->
+                            <div class="form-group">
+                                <input type="text" readonly class="form-control" id="no_telp" name="no_telp" value="<?= $sm['no_telp']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" readonly class="form-control" id="alamat" name="alamat" value="<?= $sm['alamat']; ?>">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                </div>
+                <?php echo form_close() ?>
+                </form>
+            </div>
+        </div>
+        </div>
+    <?php endforeach; ?>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
 </body>
 
 </html>
