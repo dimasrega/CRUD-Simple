@@ -30,6 +30,16 @@
                 <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#newsubMenuModal">add new
                     submenu</button>
 
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                        Logout
+                    </button>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item" type="button">Logout</button>
+                    </div>
+                </div>
+
+
                 <table class="table table-hover" id="table_id">
                     <thead>
                         <tr>
